@@ -4,6 +4,7 @@ import os
 from Crypto.Cipher import AES
 from Crypto import Random
 
+
 key = Random.new().read(AES.block_size)
 print(key)
 iv = Random.new().read(AES.block_size)
