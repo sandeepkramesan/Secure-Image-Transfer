@@ -1,7 +1,5 @@
 #combined
 
-#with open(path, encoding="utf8", errors='ignore') as f:
-
 #encrypt
 
 from Crypto.Cipher import AES
