@@ -7,14 +7,13 @@ client = socket.socket()
 def filereq():
 	filename = input("\nenter the file name : ")
 	client.send(filename.encode())
-	enc_data = client.recv(2000)
-	key = client.recv(1000)
-	iv = client.recv(1000)
-	cfb_decipher = AES.new(key, AES.MODE_CFB, iv)
-	plain_data = cfb_decipher.decrypt(enc_data)
-	with open('output.jpg', 'wb') as output_file:
-		output_file.write(plain_data)
-	output_file.close()
+	content = client.recv(4000)
+	print(content)
+	#cfb_decipher = AES.new(key, AES.MODE_CFB, iv)
+	#plain_data = cfb_decipher.decrypt(enc_data)
+	#with open('output.jpg', 'wb') as output_file:
+	#	output_file.write(plain_data)
+	#output_file.close()
 
 
 def main():

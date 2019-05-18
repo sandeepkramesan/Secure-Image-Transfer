@@ -22,8 +22,13 @@ def filedisp(client,addr):
 	
 		with open("encrypted.enc", "wb") as enc_file:
 			enc_file.write(enc_data)
+			enc_file.write(key)
+			enc_file.write(iv)
 			enc_file.close()
-key iv
+
+		with open("encrypted.enc", "rb") as enc_file2:
+			content = enc_file2.read()
+			client.send(content)
 
 	except IOError:
 		client.send(b'file does not exist!')
