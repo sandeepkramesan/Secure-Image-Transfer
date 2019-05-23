@@ -7,7 +7,9 @@ from Crypto import Random
 
 key = Random.new().read(AES.block_size)
 iv = Random.new().read(AES.block_size)
-with open('./input.jpg', 'rb') as input_file:
+
+filename = input("enter file name : ")
+with open(filename, 'rb') as input_file:
     input_data = input_file.read()
 input_file.close()
 
@@ -27,6 +29,6 @@ enc_file2.close()
 cfb_decipher = AES.new(key, AES.MODE_CFB, iv)
 plain_data = cfb_decipher.decrypt(enc_data2)
 
-with open('output.jpg', 'wb') as output_file:
+with open('output.pdf', 'wb') as output_file:
     output_file.write(plain_data)
 output_file.close()

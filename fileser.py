@@ -17,19 +17,15 @@ def filedisp(client,addr):
 	print('filename:',filename.decode())
 	print("\n")
 	try:
-		with open(filename,"rb") as input_file:
-                    input_data = input_file.read()
-		input_file.close()
-		cfb_cipher = AES.new(key, AES.MODE_CFB, iv)
-		enc_data = cfb_cipher.encrypt(input_data)
-                client.send(enc_data)
-                client.send(key)
-                client.send(iv)
-	
+	    with open(filename,"rb") as input_file:
+                input_data = input_file.read()
+	    input_file.close()
+	    cfb_cipher = AES.new(key, AES.MODE_CFB, iv)
+	    enc_data = cfb_cipher.encrypt(input_data)
 
 	except IOError:
-		client.send(b'file does not exist!')
-		print('file does not exist!\n')
+	    client.send(b'file does not exist!')
+	    print('file does not exist!\n')
 
 
 def main():
